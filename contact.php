@@ -1,13 +1,13 @@
 <?php
 // Email Setting
 //=======================================
-$admin_email = "yourname@email.com";
+$admin_email = "erpreid@gmail.com";
 $from_name   = "Site Coming Soon";
 
 
 
 if(isset($_POST['subscriberemail'])) {
-    
+
 	$subscriber_email = strip_tags($_POST['subscriberemail']);
 	if (!filter_var($subscriber_email, FILTER_VALIDATE_EMAIL)) {
 	echo 5;
@@ -15,7 +15,7 @@ if(isset($_POST['subscriberemail'])) {
 	}
 	else
 	{
-	$to  	   	= $admin_email; 
+	$to  	   	= $admin_email;
 	$subject 	= "Email Suscriber Information";
 	$message	= "Email Address: $subscriber_email";
 	$headers  	= "MIME-Version: 1.0\r\n";
@@ -30,18 +30,18 @@ if(isset($_POST['subscriberemail'])) {
 
 
 if(isset($_POST['useremail'])) {
-	
+
 	 $user_name 	= strip_tags($_POST['username']);
 	 $user_email 	= strip_tags($_POST['useremail']);
 	 $comment_text 	= strip_tags($_POST['commenttext']);
-	
+
 	if (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
 	echo 5;
 	exit;
 	}
 	else
 	{
-	$to  	   		= "$admin_email"; 
+	$to  	   		= "$admin_email";
 	$subject 		= "New Contact Information";
 	$message		= "Name: $user_name <br/>";
 	$message 		.= "Email: $user_email <br/>";
@@ -51,7 +51,7 @@ if(isset($_POST['useremail'])) {
 	$headers 		.= "From:$from_name<$admin_email>";
 	$headers 		.= "Reply-To: $admin_email\r\n"."X-Mailer: PHP/".phpversion();
 	$send 			= mail($to, $subject, $message, $headers);
-	echo '1';	
+	echo '1';
 }
 }
 
